@@ -1,0 +1,93 @@
+eksctl create cluster --name hub-cluster --region us-east-1
+
+eksctl create cluster --nmae spoke-cluster --region us-east-1
+
+kubectl config get-contexts
+
+kubectl config get-contexts | grep us-east-1
+
+kubectl config get-contexts | Select-String "us-east-1"        -----arn:aws:eksctl
+
+kubectl config use-context  (phaste ID)
+
+kubectl config current-context
+
+kubectl create namespace argocd
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+
+kubectl get pods -n argocd
+kubectl get cm -n argocd
+kubectl edit configmap argocd-cmd-params-cm -n argocd
+
+data:
+   server.instance: "true"
+   
+kubectl describe deployment/argocd-server -n argocd
+kubectl edit deploy/argocd-server -n argocd
+
+kubectl get pods -n argocd
+kubectl get svc -n argocd
+
+kubectl edit svc argocd-server -n argocd
+
+[go down to last type: Cluster IP changed to NodePort  ]
+
+kubectl get svc -n argocd
+
+[goto ec2 instance security group all traffic and all IP]
+
+kubectl get secrets -n argocd
+kubectl describe secret argocd-initial-admin-secret -n argocd  
+kubectl edit secret argocd-initial-admin-secret -n argocd 
+
+echo (copy passwd) | base64 --decode
+
+or
+
+$base64String = "cFBGUkZ1eUtiNWR3SUhIZA=="
+[System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($base64String))
+
+-----argocd cli doc(downloading)
+
+https://argo-cd.readthedocs.io/en/stable/cli_installation/
+
+
+$version = (Invoke-RestMethod https://api.github.com/repos/argoproj/argo-cd/releases/latest).tag_name
+
+$url = "https://github.com/argoproj/argo-cd/releases/download/" + $version + "/argocd-windows-amd64.exe"
+$output = "argocd.exe"
+
+Invoke-WebRequest -Uri $url -OutFile $output
+
+[Environment]::SetEnvironmentVariable("Path", "$env:Path;C:\Path\To\ArgoCD-CLI", "User")
+
+----------------------
+
+argocd cluster add
+   
+
+YURLWDlqUkdCOUxSLTlZTA==
+
+aDKX9jRGB9LR-9YL
+
+$base64String = "YURLWDlqUkdCOUxSLTlZTA=="
+[System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($base64String))
+
+PS C:\Users\Dan-cooper> ./argocd cluster add
+
+./argocd cluster add iam-root-account@spoke24-cluster.us-east-1.eksctl.io --server 54.175.249.52:32085
+
+PS C:\Users\Dan-cooper> ./argocd login 54.175.249.52:32085
+
+
+PS C:\Users\Dan-cooper> ./argocd cluster add iam-root-account@spoke24-cluster.us-east-1.eksctl.io --server 54.175.249.52:32085
+
+
+PS C:\Users\Dan-cooper> kubectl get all
+
+PS C:\Users\Dan-cooper> kubectl get configmap
+
+kubectl edit configmap
+
+
+
