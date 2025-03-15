@@ -1,0 +1,27 @@
+kubectl create namespace argocd
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+
+kubectl get pods argocd -w
+
+kubectl get svc
+
+kubectl get svc -n argocd
+kubectl edit svc argocd-server -n argocd
+
+minikube service list -n argocd
+minikube service argocd-server -n argocd
+
+
+kubectl get secret
+kubectl edit secret argocd-initial-admin-secret -n argocd
+
+echo ZUk1czVYbFk0TWlDYlp5aQ== | base64 --decode
+[System.Text.Encoding]::UTF8.GetString([Convert]::FromBase64String("VzIwdFVieWduanZqQWRpTA=="))
+
+Argocd configuration
+
+kubectl get deploy
+
+
+
+W20tUbygnjvjAdiL
